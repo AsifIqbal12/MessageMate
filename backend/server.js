@@ -32,39 +32,39 @@ app.use("/api/message",messageRoutes);
 
 
 // -------------------------- Deployment ----------------------------------------------//
-const __dirname1=path.resolve();
+// const __dirname1=path.resolve();
 
-const currentDirectory = __dirname1;
-const chatAppDirectory = path.join(currentDirectory, '..');
+// const currentDirectory = __dirname1;
+// const chatAppDirectory = path.join(currentDirectory, '..');
 
-//console.log(chatAppDirectory);
+// //console.log(chatAppDirectory);
 
-if(process.env.NODE_ENV==='production'){
-app.use(express.static(path.join(chatAppDirectory,"/frontend/build")));
+// if(process.env.NODE_ENV==='production'){
+// app.use(express.static(path.join(chatAppDirectory,"/frontend/build")));
 
-app.get('*',(req,res)=>{
-  res.sendFile(path.resolve(chatAppDirectory,"frontend","build","index.html"));
-})
+// app.get('*',(req,res)=>{
+//   res.sendFile(path.resolve(chatAppDirectory,"frontend","build","index.html"));
+// })
 
-}else{
-    app.get("/",(req,res)=>{
-    res.send("running server")
-    });
-}
-
-// const __dirname1 = path.resolve();
-
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname1, "/frontend/build")));
-
-//   app.get("*", (req, res) =>
-//     res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
-//   );
-// } else {
-//   app.get("/", (req, res) => {
-//     res.send("API is running..");
-//   });
+// }else{
+//     app.get("/",(req,res)=>{
+//     res.send("running server")
+//     });
 // }
+
+const __dirname1 = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running..");
+  });
+}
   
 // -------------------------- Deployment ----------------------------------------------//
 
