@@ -12,7 +12,7 @@ import ScrollableChat from './ScrollableChat';
 import Lottie from "react-lottie";
 import io from "socket.io-client";
 import animationData from "../animations/typing.json";
-const ENDPOINT = "http://localhost:5000";   //Endpoint of the backend
+const ENDPOINT = "https://message-mate.onrender.com";   //Endpoint of the backend
 
 var socket, selectedChatCompare;
 
